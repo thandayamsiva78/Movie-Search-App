@@ -10,7 +10,7 @@ function MovieCard() {
 
     const fetchMovies = async (page) => {
         try {
-            const response = await fetch(`http://www.omdbapi.com/?s=batman&page=${page}&apikey=1e3a2392`);
+            const response = await fetch(`http://www.omdbapi.com/?s=batman&page=${page}&apikey=${import.meta.env.VITE_API_KEY}`);
             const data = await response.json();
             setMovie(data.Search || []);
         } catch (error) {
