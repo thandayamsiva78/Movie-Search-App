@@ -1,6 +1,5 @@
 import './App.css';
-
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/header';
 import MovieCard from './components/movie-card';
 import MovieDetails from './components/movie-details';
@@ -15,7 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MovieCard />} />
           <Route path="/movie-details/:id" element={<MovieDetails />} />
-          <Route path="/feedback" element={<Feedback/>}/>
+          <Route path="/feedback" element={<Feedback />} />
         </Routes>
         <Footer />
       </Router>
