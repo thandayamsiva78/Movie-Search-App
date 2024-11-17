@@ -10,7 +10,7 @@ function MovieCard() {
 
     const fetchMovies = async (page) => {
         try {
-            const API_KEY = "1e3a2392"; 
+            const API_KEY = import.meta.env.VITE_API_KEY;
             const response = await fetch(
                 `https://www.omdbapi.com/?s=batman&page=${page}&apikey=${API_KEY}`
             );

@@ -74,8 +74,8 @@ function Header() {
                     </svg>
                 </div>
                 </div>
-                <div className="flex gap-2">
-                    <button className="font-bold  p-1 rounded-md hover:underline" onClick={handleFeedback}>Feedback</button>
+                <div className="flex gap-4">
+                    <button className="font-bold  p-2 rounded-md hover:underline hover:rounded-full hover:bg-custom-gray" onClick={handleFeedback}>F</button>
                     <button className="flex justify-center items-center font-bold text-white bg-red-600 rounded-full w-10 h-10 hover:bg-red-700 cursor-not-allowed">S</button>
                 </div>
             </div>
