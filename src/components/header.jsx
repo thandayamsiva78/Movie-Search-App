@@ -51,13 +51,12 @@ function Header() {
             <div className="flex justify-between items-center p-4">
                 <div className="flex gap-3">
                 <h1 className="cine-prime text-red-600 font-bold text-3xl">𝓒𝓲𝓷𝓮𝓟𝓻𝓲𝓶𝓮</h1>
-                <div className="search-div relative w-[600px] bg-custom-gray rounded-3xl">
+                <div className="search-div relative w-[600px] bg-custom-gray rounded-3xl" onChange={handleSearchChange}>
                     <input
                         className="w-full bg-transparent p-2 rounded-3xl text-white pl-4"
-                        placeholder="Search... Movies.."
+                        placeholder="Search..."
                         type="text"
                         value={search}
-                        onChange={handleSearchChange}
                     />
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +79,7 @@ function Header() {
                     <button className="flex justify-center items-center font-bold text-white bg-red-600 rounded-full w-10 h-10 hover:bg-red-700 cursor-not-allowed">S</button>
                 </div>
             </div>
-            <div className="border-gray-900 border"></div>
+            <div className="border-custom-gray border"></div>
 
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
