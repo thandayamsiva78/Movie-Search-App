@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link , useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
     const [search, setSearch] = useState("");
@@ -8,7 +8,6 @@ function Header() {
     const [error, setError] = useState(null);
 
     const navigate = useNavigate();
-
     const handleSearchChange = (e) => {
         setSearch(e.target.value);
     };
@@ -37,45 +36,48 @@ function Header() {
                 setLoading(false);
             }
         };
+        const timer = setTimeout(() => {
+            fetchMovies();
+        }, 500); 
 
-        fetchMovies();
+        return () => clearTimeout(timer);
     }, [search]);
 
-
-    const handleFeedback = ()=>{
+    const handleFeedback = () => {
         navigate("/feedback");
-    }
+    };
 
     return (
         <>
             <div className="flex justify-between items-center p-4">
                 <div className="flex gap-3">
-                <h1 className="cine-prime text-red-600 font-bold text-3xl">𝓒𝓲𝓷𝓮𝓟𝓻𝓲𝓶𝓮</h1>
-                <div className="search-div relative w-[600px] bg-custom-gray rounded-3xl" onChange={handleSearchChange}>
-                    <input
-                        className="w-full bg-transparent p-2 rounded-3xl text-white pl-4"
-                        placeholder="Search..."
-                        type="text"
-                        value={search}
-                    />
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 text-gray-400 bg-transparent"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M21 21l-5.197-5.197M15.803 15.803A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                    <h1 className="cine-prime text-red-600 font-bold text-3xl">𝓒𝓲𝓷𝓮𝓟𝓻𝓲𝓶𝓮</h1>
+                    <div className="search-div relative w-[600px] bg-custom-gray rounded-3xl">
+                        <input
+                            className="w-full bg-transparent p-2 rounded-3xl text-white pl-4"
+                            placeholder="Search..."
+                            type="text"
+                            value={search}
+                            onChange={handleSearchChange}
                         />
-                    </svg>
-                </div>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 text-gray-400 bg-transparent"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M21 21l-5.197-5.197M15.803 15.803A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                            />
+                        </svg>
+                    </div>
                 </div>
                 <div className="flex gap-4">
-                    <button className="font-bold  p-2 rounded-md hover:underline hover:rounded-full hover:bg-custom-gray" onClick={handleFeedback}>F</button>
+                    <button className="font-bold p-2 rounded-md hover:underline hover:rounded-full hover:bg-custom-gray" onClick={handleFeedback}>F</button>
                     <button className="flex justify-center items-center font-bold text-white bg-red-600 rounded-full w-10 h-10 hover:bg-red-700 cursor-not-allowed">S</button>
                 </div>
             </div>
@@ -104,7 +106,7 @@ function Header() {
                     </div>
                 </div>
             ) : (
-                search && <p>No movies found</p>
+                search && !loading && <p>No movies found</p>
             )}
         </>
     );
