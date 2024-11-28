@@ -12,7 +12,7 @@ const MovieDetails = () => {
             setLoading(true);
             try {
                 const API_KEY = import.meta.env.VITE_API_KEY;
-                const response = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=${API_KEY}`);
+                const response = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=1e3a2392`);
                 const data = await response.json();
 
                 if (data.Response === "True") {
